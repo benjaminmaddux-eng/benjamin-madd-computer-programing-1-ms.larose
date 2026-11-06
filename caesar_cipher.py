@@ -15,14 +15,14 @@ def dcode(mesage, shift):
     '''this just inverses the funtion: code'''
     return code(mesage, -shift)
 dih = input("Choose (1 for encode, 2 for decode): ")
-mesage = input("Enter the mesage: ")
-shift = int(input("Enter the shift value: "))#choses how far it shifts in the alphbte
+mesage = input("input: ")
+shift = int(input("input the shift: "))#choses how far it shifts in the alphbte
 if dih == "1":
     result = code(mesage, shift)
     print("coded mesage:", result)
 elif dih == "2":
     result = dcode(mesage, shift)
-    print("Decoded mesage:", result)
+    print("Dcoded mesage:", result)
 else:
-    print("Invalid operation. Please choose 1 or 2.")
+    print("choose 1 or 2.")
 #idk how to make this work with numbers i might just add +1 per shift 
