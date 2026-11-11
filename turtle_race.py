@@ -50,46 +50,34 @@ tB.color("blue")
 tB.goto(-400,-270)
 tB.pendown()
 
-
-
+colors=["white","black"]
+seg=40
+seglen=50
 line.hideturtle()
-line.color("white")
 line.pensize(10)
 line.up()
-line.goto(400,400)
+line.goto(400,500)
 line.down()
+line.setheading(270)
+for i in range(seg):
+    line.pencolor(colors[i % len(colors)])
+    line.forward(seg)
 line.goto(400,-400)
+thing = turtle.Turtle()
+thing.hideturtle()
+thing.penup()
+thing.goto(0,250)
+working=True
 
-tR.speed(random.randint(1,5));tP.speed(random.randint(1,5));tY.speed(random.randint(1,5));tG.speed(random.randint(1,5));tB.speed(random.randint(1,5))
-tR.goto(-200,370);tP.goto(-200,210);tY.goto(-200,50);tG.goto(-200,-120);tB.goto(-200,-270)
-tR.speed(random.randint(1,5))
-tP.speed(random.randint(1,5))
-tY.speed(random.randint(1,5))
-tG.speed(random.randint(1,5))
-tB.speed(random.randint(1,5))
-tR.goto(0,370)
-tP.goto(0,210)
-tY.goto(0,50)
-tG.goto(0,-120)
-tB.goto(0,-270)
-tR.speed(random.randint(1,5))
-tP.speed(random.randint(1,5))
-tY.speed(random.randint(1,5))
-tG.speed(random.randint(1,5))
-tB.speed(random.randint(1,5))
-tR.goto(200,370)
-tP.goto(200,210)
-tY.goto(200,50)
-tB.goto(200,-270)
-tG.goto(200,-120)
-tR.speed(random.randint(1,5))
-tP.speed(random.randint(1,5))
-tY.speed(random.randint(1,5))
-tG.speed(random.randint(1,5))
-tB.speed(random.randint(1,5))
-tR.goto(400,370)
-tP.goto(400,210)
-tY.goto(400,50)
-tG.goto(400,-120)
-tB.goto(400,-270)
+while working:
+    for c in (tR,tP,tY,tG,tB):
+        move=random.randint(1,15)
+        c.fd(move)
+        if c.xcor()>= 400:
+            win=c.pencolor().capitalize()
+            mes=f"{win} won"
+            thing.color(c.pencolor())
+            thing.write(mes,align="center",font=("Times new roman",67,"bold"))
+            working=False
+            break
 turtle.exitonclick()
