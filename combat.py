@@ -1,13 +1,15 @@
 import random
-def run():
-    return random.randint(1,11)
-names=['borg','wolf','theaf','goblin','knight']
-def enemy(name):
-    return random.choice(name)
-def enemdmg():
-    return random.randint(1,15)
-def enemhp():
-    return random.randint(25,90)
+
+
+
+names=["borg","wolf","theaf","goblin","knight"]
+
+nameem=random.choice(names)
+
+enemdmg=random.randint(1,15)
+
+enemhp=random.randint(25,90)
+
 strp=0
 hpp=0
 dexp=0
@@ -28,30 +30,41 @@ while True:
         break
     print(f"strenght points: {strp} (+5 dmg per strenght stat)")
     print(f"health points: {hpp} (+20 hp per health stat)")
-    print(f"dexarity points: {dexp} (+1/10 chance to dodge per dex stat)")
-strth=strp*5
-hp=hpp*5
-dextar=dexp*5
+    print(f"dexarity points: {dexp} (+1/10 chance to dodge per dex stat) and added chance to flee from a fight")
+strth=int(strp*5)
+raning=dexp+2
+def run():
+    random.randint(1,raning)
 
+hp=hpp*5
+
+dextar=int(dexp*5)  
+enehp=enemhp
+enedmg=enemdmg
+print(f"you are being attacked by a {nameem} with {enehp} health points and dose {enedmg} damage to you")
 while True:
-    nameem=enemy
-    enehp=enemhp
-    enedmg=enemdmg
-    print(f"you are being attacked by a {nameem} with {enehp} health points and dose {enedmg} damage to you")
+    print(f"you have: {hp} health")
+    print(f"the {nameem} has: {enehp} health")
     attack=input("do you want to attack(1) heal(2) flee(3)")
     if attack == "1":
-        enehp -= strth
+        enehp -= int(strth)
         if enehp <= 0:
             print(f"you killed the {nameem}")
             break
         else:
-            print("enemy turn"):
+            print("enemy turn")
+            if run() == 1:
+                hp -= enemdmg
+                if hp <= 0:
+                    print("you have been defeated")
+                    break
+            else:
+                print("you dodged the attack")
     if attack == "2":
         hp += 5
     if attack == "3":
-        please=input("chose how you run 1-10")
-        if please == run:  
+        if run() != 1:
             print("you sucsessfuly ran for your life")
             break
         else:
-            print(f"you didnt excape the{nameem}")
+            print(f"you didnt escape the{nameem}")
